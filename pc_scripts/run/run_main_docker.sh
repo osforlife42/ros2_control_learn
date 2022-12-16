@@ -9,8 +9,7 @@ docker run  --privileged --network host --rm -it  --env="DISPLAY" --env="QT_X11_
 --volume="$ROS2_DOCKER_WS/src:/home/ros/dev_ws/src:rw" --volume="$ROS2_DOCKER_WS/install:/home/ros/dev_ws/install:rw" \
 --volume="$ROS2_DOCKER_WS/scripts:/home/ros/dev_ws/scripts:rw" --volume="$ROS2_DOCKER_WS/docker_save:/home/ros/dev_ws/docker_save:rw" \
 --volume="$ROS2_DOCKER_WS/docker_build:/home/ros/dev_ws/build:rw" \
---user "$(id -u):$(id -g)" --name "dorothy_sim" dorothy2-sim:dev \
-/bin/bash -c -i 'ros2 launch dorothy_robot dorothy_only_sim.launch.py ' 
+--user "$(id -u):$(id -g)" ros2-control
 
 # --privileged 
 # --name="nav2_docker" 
