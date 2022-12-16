@@ -9,4 +9,4 @@ docker run  --privileged --network host --rm -it  --env="DISPLAY" --env="QT_X11_
 --volume="$ROS2_DOCKER_WS/scripts:/home/ros/dev_ws/scripts:rw" --volume="$ROS2_DOCKER_WS/docker_save:/home/ros/dev_ws/docker_save:rw" \
 --volume="$ROS2_DOCKER_WS/docker_build:/home/ros/dev_ws/build:rw" \
 --user "$(id -u):$(id -g)" ros2-control \
-/bin/bash -c -i "cd ~/dev_ws; colcon build --symlink-install --packages-select $dorothy_packages" 
+/bin/bash -c -i "cd ~/dev_ws; colcon build --symlink-install " 

@@ -4,9 +4,13 @@ FROM althack/ros2:galactic-dev
 #
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update 
-# RUN apt-get -y install --no-install-recommends ros-galactic-
+RUN apt-get -y install --no-install-recommends ros-galactic-ros2-control \ 
+        ros-galactic-gazebo-ros2-control
    
+# RUN apt-get -y install --no-install-recommends ....
+
 RUN echo "finished installing packages !! "
+# not cleaning up to have apt up and going from the start
 #    # Clean up
 #    && apt-get autoremove -y \
 #    && apt-get clean -y \
