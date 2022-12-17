@@ -1,4 +1,5 @@
 docker_build/*
+docker_save/*
 build/*
 install/*
 log/*

@@ -5,7 +5,8 @@ FROM althack/ros2:galactic-dev
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update 
 RUN apt-get -y install --no-install-recommends ros-galactic-ros2-control \ 
-        ros-galactic-gazebo-ros2-control
+        ros-galactic-gazebo-ros2-control \ 
+        ros-galactic-ros2-controllers 
    
 # RUN apt-get -y install --no-install-recommends ros-galactic-joint-publisher-gui 
 
