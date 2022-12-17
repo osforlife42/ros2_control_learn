@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get -y install --no-install-recommends ros-galactic-ros2-control \ 
         ros-galactic-gazebo-ros2-control
    
-# RUN apt-get -y install --no-install-recommends ....
+# RUN apt-get -y install --no-install-recommends ros-galactic-joint-publisher-gui 
 
 RUN echo "finished installing packages !! "
 # not cleaning up to have apt up and going from the start
@@ -22,9 +22,19 @@ ENV USERNAME=ros
 USER $USERNAME
 
 # Set up auto-source of workspace for ros user
-ARG WORKSPACE="/home/${USERNAME}/dev_ws"
+ARG HOME_PATH="/home/${USERNAME}"
+ARG WORKSPACE="${HOME_PATH}/dev_ws"
 RUN mkdir $WORKSPACE
 RUN chown ros:ros $WORKSPACE
+
+# install using rosdep from src 
+RUN rosdep update --rosdistro ${ROS_DISTRO}
+RUN mkdir -p "${HOME_PATH}/rosdep_src/"
+RUN cd "${HOME_PATH}/rosdep_src/"; git clone https://github.com/ros-controls/ros2_control_demos.git
+WORKDIR "${HOME_PATH}"
+RUN rosdep install --from-paths rosdep_src --ignore-src -r -y
+
+
 #COPY ./scripts/* /tmp/
 #RUN /tmp/setup_docker_env.sh
 WORKDIR $WORKSPACE
